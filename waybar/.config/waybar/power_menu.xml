@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <menu id="menu">
+    <section>
+      <item>
+        <attribute name="label">Suspender</attribute>
+        <attribute name="action">menu.suspend</attribute>
+      </item>
+      <item>
+        <attribute name="label">Bloquear</attribute>
+        <attribute name="action">menu.lock</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
+        <attribute name="label">Cerrar sesión</attribute>
+        <attribute name="action">menu.logout</attribute>
+      </item>
+      <item>
+        <attribute name="label">Reiniciar</attribute>
+        <attribute name="action">menu.reboot</attribute>
+      </item>
+      <item>
+        <attribute name="label">Apagar</attribute>
+        <attribute name="action">menu.shutdown</attribute>
+      </item>
+    </section>
+  </menu>
+</interface>

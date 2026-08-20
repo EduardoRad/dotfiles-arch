@@ -1,0 +1,102 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 30,
+    "spacing": 6,
+
+    "modules-left": ["niri/workspaces", "custom/steam", "custom/protonvpn"],
+    "modules-center": ["niri/window"],
+    "modules-right": ["idle_inhibitor", "tray", "battery", "clock", "group/quicksettings", "custom/power"],
+ 
+    "custom/power": {
+        "format": "⏻",
+        "on-click": "/usr/bin/wlogout"
+    },
+
+    "niri/workspaces": {
+        "format": "{index}"
+    },
+
+    "niri/window": {
+        "format": "{}",
+        "max-length": 60,
+        "separate-outputs": true
+    },
+
+    "custom/steam": {
+        "format": "󰓓",
+        "spacing": 10,
+        "tooltip-format": "Steam",
+        "on-click": "steam"
+    },
+
+    "custom/protonvpn": {
+        "format": "󰦝",
+        "spacing": 10,
+        "tooltip-format": "ProtonVPN",
+        "on-click": "protonvpn-app"
+    },
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": { "activated": "󰅶", "deactivated": "󰛊" }
+    },
+
+    "tray": { "spacing": 8 },
+
+    "battery": {
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% 󰂄",
+        "format-icons": ["󰁻", "󰁽", "󰂀", "󰂂", "󰁹"],
+        "states": { "warning": 25, "critical": 10 }
+    },
+
+    "clock": {
+        "format": "{:%H:%M}",
+        "tooltip-format": "<tt>{calendar}</tt>"
+    },
+
+    "group/quicksettings": {
+        "orientation": "horizontal",
+        "drawer": {
+            "transition-duration": 300,
+            "transition-left-to-right": false,
+            "children-class": "qs-item"
+        },
+        "modules": ["custom/qs-icon", "pulseaudio", "backlight", "network", "bluetooth"]
+    },
+
+    "custom/qs-icon": {
+        "format": "󰒓",
+        "tooltip-format": "Ajustes rápidos"
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "󰝟",
+        "format-icons": ["󰕿", "󰖀", "󰕾"],
+        "on-click": "pavucontrol",
+        "scroll-step": 5
+    },
+
+    "backlight": {
+        "format": "󰃠 {percent}%",
+        "on-scroll-up": "brightnessctl set +5%",
+        "on-scroll-down": "brightnessctl set 5%-"
+    },
+
+    "network": {
+        "format-wifi": "󰤨 {essid}",
+        "format-ethernet": "󰈀",
+        "format-disconnected": "󰤭",
+        "on-click": "nm-connection-editor"
+    },
+
+    "bluetooth": {
+        "format": "󰂯",
+        "spacing": 10,
+        "format-off": "󰂲",
+        "format-connected": "󰂱 {num_connections}",
+        "on-click": "blueman-manager"
+    }
+}
