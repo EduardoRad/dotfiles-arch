@@ -1,0 +1,10 @@
+#!/bin/bash
+opciones="Bloquear\nSuspender\nCerrar sesión\nReiniciar\nApagar"
+sel=$(echo -e "$opciones" | fuzzel --dmenu --prompt "⏻ ")
+case "$sel" in
+  Bloquear)        swaylock -f ;;
+  Suspender)       systemctl suspend ;;
+  "Cerrar sesión") niri msg action quit ;;
+  Reiniciar)       systemctl reboot ;;
+  Apagar)          systemctl poweroff ;;
+esac
