@@ -1,0 +1,38 @@
+# Fuente
+font-family = JetBrainsMono Nerd Font
+font-size = 12
+font-feature = calt
+font-feature = liga
+
+# Tema
+theme = Catppuccin Mocha
+background-opacity = 0.95
+background-blur = true
+
+# Ventana — sin decoración, ya que niri gestiona el layout
+window-decoration = false
+window-padding-x = 8
+window-padding-y = 6
+window-padding-balance = true
+
+# Cursor
+cursor-style = block
+cursor-style-blink = false
+
+# Scrollback
+scrollback-limit = 100000
+
+# Sin campana ni confirmaciones molestas
+confirm-close-surface = false
+
+# Shell integration (autocompletado de cwd en splits nuevos)
+shell-integration = bash
+shell-integration-features = cursor,sudo,title
+
+keybind = ctrl+shift+e=new_split:right
+keybind = ctrl+shift+o=new_split:down
+keybind = ctrl+shift+h=goto_split:left
+keybind = ctrl+shift+l=goto_split:right
+keybind = ctrl+shift+k=goto_split:up
+keybind = ctrl+shift+j=goto_split:down
+keybind = ctrl+shift+w=close_surface
