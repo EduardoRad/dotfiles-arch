@@ -6,7 +6,6 @@ font-feature = liga
 
 # Tema
 theme = Catppuccin Mocha
-background-opacity = 0.95
 background-blur = true
 
 # Ventana — sin decoración, ya que niri gestiona el layout
