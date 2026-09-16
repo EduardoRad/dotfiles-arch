@@ -9,7 +9,8 @@ dotfiles-arch/
 ├── nvim/.config/nvim/
 ├── niri/.config/niri/
 ├── waybar/.config/waybar/
-└── ghostty/.config/ghostty/
+├── ghostty/.config/ghostty/
+└── fuzzel/.config/fuzzel/
 ```
 
 ## Setup on a new machine
@@ -26,6 +27,7 @@ ln -sf ~/dotfiles-arch/nvim/.config/nvim ~/.config/nvim
 ln -sf ~/dotfiles-arch/niri/.config/niri ~/.config/niri
 ln -sf ~/dotfiles-arch/waybar/.config/waybar ~/.config/waybar
 ln -sf ~/dotfiles-arch/ghostty/.config/ghostty ~/.config/ghostty
+ln -sf ~/dotfiles-arch/fuzzel/.config/fuzzel ~/.config/fuzzel
 ```
 
 ## Adding a new config
