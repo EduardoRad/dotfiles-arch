@@ -9,7 +9,7 @@ input {
 
     touchpad {
         tap
-        // dwt
+        dwt
         // dwtp
         // drag false
         // drag-lock
@@ -128,7 +128,7 @@ layout {
     // You can enable drop shadows for windows.
     shadow {
         // Uncomment the next line to enable shadows.
-        // on
+        on
 
         // By default, the shadow draws only around its window, and not behind it.
         // Uncomment this setting to make the shadow draw behind its window.
@@ -144,7 +144,7 @@ layout {
         // window. These will also remove client-side shadows if the window
         // draws any.
         //
-        // draw-behind-window true
+        draw-behind-window true
 
         // You can change how shadows look. The values below are in logical
         // pixels and match the CSS box-shadow properties.
@@ -159,7 +159,7 @@ layout {
         offset x=0 y=5
 
         // You can also change the shadow color and opacity.
-        color "#0007"
+        color "#11111b70"
     }
 
     // Struts shrink the area occupied by windows, similarly to layer-shell panels.
@@ -184,6 +184,12 @@ layout {
 spawn-at-startup "swayosd-server"
 spawn-at-startup "xwayland-satellite"
 spawn-at-startup "swaybg" "-i" "/home/edu/.config/niri/wallpaper.png" "-m" "fill"
+spawn-at-startup "mako"
+spawn-at-startup "/usr/lib/polkit-kde-authentication-agent-1"
+
+// Bloquear tras 5 min de inactividad, apagar pantalla a los 10 min,
+// y bloquear siempre antes de suspender.
+spawn-sh-at-startup "swayidle -w timeout 300 'swaylock -f' timeout 600 'niri msg action power-off-monitors' resume 'niri msg action power-on-monitors' before-sleep 'swaylock -f'"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
@@ -202,7 +208,7 @@ environment {
 // Additionally, clients will be informed that they are tiled, removing some client-side rounded corners.
 // This option will also fix border/focus ring drawing behind some semitransparent windows.
 // After enabling or disabling this, you need to restart the apps for this to take effect.
-// prefer-no-csd
+prefer-no-csd
 
 // You can change the path where screenshots are saved.
 // A ~ at the front will be expanded to the home directory.
@@ -266,9 +272,8 @@ window-rule {
     // block-out-from "screencast"
 }
 
-// Example: enable rounded corners for all windows.
-// (This example rule is commented out with a "/-" in front.)
-/-window-rule {
+// Rounded corners for all windows (requires prefer-no-csd above to render correctly).
+window-rule {
     geometry-corner-radius 12
     clip-to-geometry true
 }
@@ -465,8 +470,12 @@ binds {
     // The following binds move the focused window in and out of a column.
     // If the window is alone, they will consume it into the nearby column to the side.
     // If the window is already in a column, they will expel it out.
+    // Kept for US layouts, but bracketleft/bracketright are only reachable
+    // via AltGr on the "es" layout, so F4/F5 below are the reliable versions.
     Mod+BracketLeft  { consume-or-expel-window-left; }
     Mod+BracketRight { consume-or-expel-window-right; }
+    Mod+F4 { consume-or-expel-window-left; }
+    Mod+F5 { consume-or-expel-window-right; }
 
     // Consume one window from the right to the bottom of the focused column.
     Mod+Comma  { consume-window-into-column; }
@@ -509,10 +518,16 @@ binds {
     // set-column-width "100" will make the column occupy 200 physical screen pixels.
     Mod+Minus { set-column-width "-10%"; }
     Mod+Equal { set-column-width "+10%"; }
+    // Kept for US layouts, but Equal is only reachable via Shift+0 on the
+    // "es" layout, so F2/F3 below are the reliable versions.
+    Mod+F2 { set-column-width "-10%"; }
+    Mod+F3 { set-column-width "+10%"; }
 
     // Finer height adjustments when in column with other windows.
     Mod+Shift+Minus { set-window-height "-10%"; }
     Mod+Shift+Equal { set-window-height "+10%"; }
+    Mod+Shift+F2 { set-window-height "-10%"; }
+    Mod+Shift+F3 { set-window-height "+10%"; }
 
     // Move the focused window between the floating and the tiling layout.
     Mod+V       { toggle-window-floating; }
